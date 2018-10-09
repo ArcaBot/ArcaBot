@@ -12,7 +12,7 @@ client.on("ready", () => {
     console.log("Au revoir")
 });
 
-client.login("token");
+client.login("process.env.TOKEN");
 
 client.on('message', message => {
   if (message.content === '!avatar') {
