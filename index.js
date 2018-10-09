@@ -85,7 +85,7 @@ client.on('message', message => {
         if (member) {
           member.ban({
             reason: 'They were bad!',
-          }).then(() => {
+          }).catch(console.error)(() => {
             message.channel.send(`${user.tag} a était banni avec succès !`);
           }).catch(err => {
             message.reply("Tu n'as pas la permission de bannir quelqu'un !");
