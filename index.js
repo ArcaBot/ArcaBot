@@ -108,7 +108,7 @@ client.on('message', message => {
     if (user) {
       const member = message.guild.member(user);
       if (member) {
-        member.kick('Optional reason that will display in the audit logs').then(() => {
+        member.kick('Optional reason that will display in the audit logs').catch(console.error)(() => {
           message.channel.send(`${user.tag} a était expulser avec succès`);
         }).catch(err => {
           message.reply("Tu n'as pas la permission d'expulser quelqu'un !");
