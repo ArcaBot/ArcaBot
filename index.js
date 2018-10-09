@@ -11,7 +11,7 @@ client.on("ready", () => {
     console.log("Au revoir")
 });
 
-client.login("NDgxOTgzMTYwNTI4MTQyMzM2.DmSbUA.7UPACvQwqeSy0Xz--A0B5qbX_ps");
+client.login("process.env.TOKEN");
 
 client.on('message', message => {
   if (message.content === '!avatar') {
