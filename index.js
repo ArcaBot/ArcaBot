@@ -1,5 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client()
+const token = process.env.token;
 
 var prefix = "!";
 var randnum = 0;
@@ -11,7 +12,7 @@ client.on("ready", () => {
     console.log("Au revoir")
 });
 
-client.login("process.env.TOKEN");
+client.login("token");
 
 client.on('message', message => {
   if (message.content === '!avatar') {
