@@ -4,16 +4,16 @@ const token = process.env.token;
 
 var prefix = "!";
 var randnum = 0;
-
+.catch(console.error)
 
 client.on("ready", () => {
-    client.user.setActivity(`!h`);
+    client.user.setActivity(`!h`);.catch(console.error)
     client.user.setStatus("Online");
-    console.log("Au revoir")
-});
+    console.log("Au revoir").catch(console.error)
+});.catch(console.error)
 
-client.on('message', message => {
-  if (message.content === '!avatar') {
+client.on('message', message => {.catch(console.error)
+  if (message.content === '!avatar') {.catch(console.error)
     message.reply(message.author.avatarURL);
 };
     if (message.content === prefix + "ping"){
@@ -27,7 +27,7 @@ client.on('message', message => {
   if (message.content === prefix + "addme"){
     var help_embed = new Discord.RichEmbed()
     .setColor('#0EEACD')
-    .addField("Voici le lien pour m'ajouter !:innocent:",  "https://discordapp.com/api/oauth2/authorize?client_id=481983160528142336&permissions=2146958839&scope=bot")
+    .addField("Voici le lien pour m'ajouter !:innocent:",  "https://discordapp.com/api/oauth2/authorize?client_id=481983160528142336&permissions=2146958839&scope=bot").catch(console.error)
     message.channel.send(help_embed);
     console.log("commande !addme faite !");
   }
