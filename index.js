@@ -38,7 +38,7 @@ client.on('message', message => {
     .addField("Voici le lien pour rejoindre le serveur !:innocent:",  "https://discord.gg/FBB4xz")
     message.channel.send(help_embed);
     console.log("commande !server faite !");
-  }.catch(console.error)
+  }
 
   if (message.content === prefix + "h"){
     var help_embed = new Discord.RichEmbed()
