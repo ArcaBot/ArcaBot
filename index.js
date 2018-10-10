@@ -12,8 +12,6 @@ client.on("ready", () => {
     console.log("Au revoir")
 });
 
-client.login("token");
-
 client.on('message', message => {
   if (message.content === '!avatar') {
     message.reply(message.author.avatarURL);
@@ -52,7 +50,23 @@ client.on('message', message => {
   message.channel.send(help_embed);
   console.log("commandes help demandée !");
 
+  if(message.content.startsWith(prefix + "mute")) {
+    if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission !");
 
+    if(message.mentions.users.size === 0) {
+        return message.channel.send('Vous devez mentionner un utilisateur !');
+    }
+
+    var mute = message.guild.member(message.mentions.users.first());
+    if(!mute) {
+        return message.channel.send("Je n'ai pas trouvé l'utilisateur !");
+    }
+
+    if(!message.guild.member(client.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Je n'ai pas la permission !");
+    message.channel.overwritePermissions(mute, { SEND_MESSAGES: false}).then(member => {
+        message.channel.send(`${mute.user.username} est mute !`);
+    })
+}
 
   client.on('message', message => {
     if(message.content.startsWith(prefix + "blague")) {
@@ -75,53 +89,7 @@ client.on('message', message => {
 });
 
 
-  client.on('message', message => {
-    if (!message.guild) return;
-  
-    if (message.content.startsWith('!ban')) {
-      const user = message.mentions.users.first();
-      if (user) {
-        const member = message.guild.member(user);
-        if (member) {
-          member.ban({
-            reason: 'They were bad!',
-          }).catch(console.error)(() => {
-            message.channel.send(`${user.tag} a était banni avec succès !`);
-          }).catch(err => {
-            message.reply("Tu n'as pas la permission de bannir quelqu'un !");
-            console.error(err);
-          });
-        } else {
-          message.reply('That user isn\'t in this guild!');
-        }
-      } else {
-        message.reply('tu dois mentionner une personne !');
-      }
-    }
-  });
-
-client.on('message', message => {
-  if (!message.guild) return;
-
-  if (message.content.startsWith('!kick')) {
-    const user = message.mentions.users.first();
-    if (user) {
-      const member = message.guild.member(user);
-      if (member) {
-        member.kick('Optional reason that will display in the audit logs').catch(console.error)(() => {
-          message.channel.send(`${user.tag} a était expulser avec succès`);
-        }).catch(err => {
-          message.reply("Tu n'as pas la permission d'expulser quelqu'un !");
-          console.error(err);
-        });
-      } else {
-        message.reply('That user isn\'t in this guild!');
-      }
-    } else {
-      message.reply('Tu dois mentionner une personne !');
-    }
-  }
-});
+client.login("token");
 
 //client.on('guildMemberAdd', member => {
    // const channel = member.guild.channels.find(ch => ch.name === 'member-log');
@@ -133,19 +101,13 @@ client.on('message', message => {
     //member.createDM().then(channel => {
       //return channel.send("**Bienvenue sur Arcania** je te conseille d'aller voir le réglement, choisir des rôles si tu le souhaite et n'hésite pas a aller te présenter !:hugging: :tada: member.displayName")
     //}).catch(console.error)
-  //})
-  
+  //}
 
-
-
-
-  client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.find(ch => ch.name === 'member-log');
-    if (!channel) return;
-    message.channel.send(`Bienvenue à ${member} sur :palm_tree: |-Arcania ! Amuses-toi bien :grin:
-    Je t'invite à aller lire le règlement, tu peux aussi choisir quelque rôle dans #🗂▕-rôles
-    Et Amuse toi bien !:hugging::tada:
-    Nous sommes maintenant ${membercount} sur le serveur !`);
-  });
-
-
+  //client.on('guildMemberAdd', member => {
+   // const channel = member.guild.channels.find(ch => ch.name === 'member-log');
+    //if (!channel) return;
+   // message.channel.send(`Bienvenue à ${member} sur :palm_tree: |-Arcania ! Amuses-toi bien :grin:
+   // Je t'invite à aller lire le règlement, tu peux aussi choisir quelque rôle dans #🗂▕-rôles
+   // Et Amuse toi bien !:hugging::tada:
+    //Nous sommes maintenant ${membercount} sur le serveur !`);
+  //});
