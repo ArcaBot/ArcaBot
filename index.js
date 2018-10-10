@@ -1,6 +1,6 @@
 const Discord = require("discord.js");
 const client = new Discord.Client()
-const token = process.env.token;
+
 
 var prefix = "!";
 var randnum = 0;
@@ -72,4 +72,4 @@ client.on('message', message => {.catch(console.error)
 });
 
 
-client.login("token");
+
