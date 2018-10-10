@@ -50,23 +50,7 @@ client.on('message', message => {
   message.channel.send(help_embed);
   console.log("commandes help demandée !");
 
-  if(message.content.startsWith(prefix + "mute")) {
-    if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.channel.send("Vous n'avez pas la permission !");
-
-    if(message.mentions.users.size === 0) {
-        return message.channel.send('Vous devez mentionner un utilisateur !');
-    }
-
-    var mute = message.guild.member(message.mentions.users.first());
-    if(!mute) {
-        return message.channel.send("Je n'ai pas trouvé l'utilisateur !");
-    }
-
-    if(!message.guild.member(client.user).hasPermission("ADMINISTRATOR")) return message.channel.send("Je n'ai pas la permission !");
-    message.channel.overwritePermissions(mute, { SEND_MESSAGES: false}).then(member => {
-        message.channel.send(`${mute.user.username} est mute !`);
-    })
-}
+ 
 
   client.on('message', message => {
     if(message.content.startsWith(prefix + "blague")) {
