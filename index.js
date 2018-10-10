@@ -4,7 +4,6 @@ const token = process.env.token;
 
 var prefix = "!";
 var randnum = 0;
-.catch(console.error)
 
 client.on("ready", () => {
     client.user.setActivity(`!h`);.catch(console.error)
