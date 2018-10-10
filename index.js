@@ -74,24 +74,3 @@ client.on('message', message => {
 
 
 client.login("token");
-
-//client.on('guildMemberAdd', member => {
-   // const channel = member.guild.channels.find(ch => ch.name === 'member-log');
-   // if (!channel) return;
-    //message.reply(`Bienvenue sur le serveur je te conseille d'aller voir le réglement, et amuse toi bien !:'), ${member}`);
-  //});
-
-  //client.on('guildMemberAdd', member => {
-    //member.createDM().then(channel => {
-      //return channel.send("**Bienvenue sur Arcania** je te conseille d'aller voir le réglement, choisir des rôles si tu le souhaite et n'hésite pas a aller te présenter !:hugging: :tada: member.displayName")
-    //}).catch(console.error)
-  //}
-
-  //client.on('guildMemberAdd', member => {
-   // const channel = member.guild.channels.find(ch => ch.name === 'member-log');
-    //if (!channel) return;
-   // message.channel.send(`Bienvenue à ${member} sur :palm_tree: |-Arcania ! Amuses-toi bien :grin:
-   // Je t'invite à aller lire le règlement, tu peux aussi choisir quelque rôle dans #🗂▕-rôles
-   // Et Amuse toi bien !:hugging::tada:
-    //Nous sommes maintenant ${membercount} sur le serveur !`);
-  //});
