@@ -38,14 +38,14 @@ client.on('message', message => {
     .addField("Voici le lien pour rejoindre le serveur !:innocent:",  "https://discord.gg/FBB4xz")
     message.channel.send(help_embed);
     console.log("commande !server faite !");
-  }
+  }.catch(console.error)
 
   if (message.content === prefix + "h"){
     var help_embed = new Discord.RichEmbed()
     .setColor('#0EEACD')
     .addField("Commande du bot :robot:", "utiliser le préfixe '!' au début de chaque commandes ! :innocent: ")
     .addField("Commande fun :thumbsup: ", "ping | avatar | blague")
-    .addField("Commande de modération :hammer_pick:", "kick | ban")
+    .addField("Commande de modération :hammer_pick:", "kick | ban").catch(console.error)
     .addField("Arcabot ", "!server | !addme")
   message.channel.send(help_embed);
   console.log("commandes help demandée !");
